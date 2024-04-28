@@ -1,5 +1,5 @@
 @echo off
-title Ultimate Destruction and Fun Virus Script
+title batch virus made by prolokmn
 
 :adminCheck
 net session >nul 2>&1
